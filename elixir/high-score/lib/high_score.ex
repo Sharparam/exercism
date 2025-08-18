@@ -9,7 +9,7 @@ defmodule HighScore do
 
   def reset_score(scores, name), do: Map.put(scores, name, @initial_score)
 
-  def update_score(scores, name, score), do: Map.put(scores, name, score + Map.get(scores, name, 0))
+  def update_score(scores, name, score), do: Map.update(scores, name, score, fn value -> score + value end)
 
   def get_players(scores), do: Map.keys(scores)
 end
