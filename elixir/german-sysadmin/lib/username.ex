@@ -1,7 +1,9 @@
 defmodule Username do
-  def sanitize(username, s \\ ~c"")
+  def sanitize(username), do: sanitize(username, ~c"")
 
-  def sanitize([h | t], s) do
+  defp sanitize(username, s)
+
+  defp sanitize([h | t], s) do
     case h do
       ?ä -> sanitize(t, s ++ ~c"ae")
       ?ö -> sanitize(t, s ++ ~c"oe")
@@ -12,5 +14,5 @@ defmodule Username do
     end
   end
 
-  def sanitize([], s), do: s
+  defp sanitize([], s), do: s
 end
